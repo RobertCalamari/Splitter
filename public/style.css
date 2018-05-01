@@ -148,3 +148,6 @@ h4 {
 ::-ms-input-placeholder { /* Microsoft Edge */
     opacity: 0.2;
 } 
+
+table { table-layout: fixed; }
+td { width: 33%; }

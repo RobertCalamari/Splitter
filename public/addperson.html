@@ -21,7 +21,7 @@
     
     <div class="pageAdd" id="pageAdd">
       <div id="root"></div>
-      <h4>Add Person</h4>
+      <h4 id="addpersonnum">Add Person 1</h4>
       
       
       <br>
@@ -29,7 +29,7 @@
       <input type="text" class="box" id="name" name="name" placeholder="Name"><br>
       <input type="text" class="box" id="amount" name="amount" placeholder="Amount"><br>
       <input type="text" class="box" id="tip" name="tip" placeholder="Tip"><br>
-      <input type="text" class="box" id="tax" name="tax" placeholder="Tax"><br>
+      <input type="text" class="box" id="tax" name="tax" placeholder="Tax Percentage"><br>
       <br>
         <div class="round">
           <input type="checkbox" id="checkbox" /> 
@@ -53,9 +53,15 @@
 
     <div class="pageFinal" id="pageFinal" style="display:none;">
       <h4>Splitter</h4>
-      <input type="submit" value="Return" name="submit" id="submit" onclick="buttonReturn()">
+
 
       <label id="printme" style="color: #000000"></label>
+
+
+
+
+      <input type="submit" value="Return" name="submit" id="submit" onclick="buttonReturn()">
+
     </div>
 
 
@@ -76,21 +82,35 @@ var inpAmount = document.getElementById('amount');
 var inpTip = document.getElementById('tip');
 var inpTax = document.getElementById('tax');
 var printL = document.getElementById('printme');
+var inpbday = document.getElementById('checkbox');
+var addpn = document.getElementById('addpersonnum');
 
 function buttonDone() {
 
         pageAdd1.style.display = 'none';
         pageFinal1.style.display = 'inline-block';
+        printL.innerHTML="";
+
+         printL.innerHTML+='<table align="center">';
+        for(i=0;personList.length;i++)
+        {  
 
 
+                  // printL.innerHTML+='<tr>';
+                  // printL.innerHTML+="<td>" + personList[i].name + "</td>";
+                  // printL.innerHTML+="<td>" + personList[i].total + "</td>";
+                  // printL.innerHTML+="<td>" + '<button type="submit" class="button3" name="editbut" value="' + i + '">Edit</button>' + "</td>";
+                  // printL.innerHTML+="<td>" + '<button type="submit" class="button3" name="delbut" value="' + i + '">Del</button>' + "</td>";
+                  // printL.innerHTML+="</tr>";
 
+                  printL.innerHTML+='<tr>' + "<td>" + personList[i].name + "</td>" + "<td>" + personList[i].total + "</td>" + "<td>" + '<button type="submit" class="button3" name="editbut" value="' + i + '">Edit</button>' + "</td>" + "<td>" + '<button type="submit" class="button3" name="delbut" value="' + i + '">Del</button>' + "</td>" + "</tr>";
 
-     
-        // for(i=0;personList.length;i++)
-        // {  
-        //   printL.innerHTML+=personList[i].name + ":       " + personList[i].total " <br> ";
-        // }
+               
+           
 
+          //printL.innerHTML+=personList[i].name + ":       " + personList[i].total " <br> ";
+        }
+        printL.innerHTML+="</table>";
 
 
 
@@ -106,6 +126,12 @@ var personList=[];
 
 function buttonAdd() {
 
+      var yesorno = false;
+
+      if(inpbday.checked == true)
+      {
+          yesorno = true;
+      }
 
 
       var person = {name:inpName.value,amount:inpAmount.value,tip:inpTip.value,tax:inpTax.value,birthday:yesorno,total:0};
@@ -116,6 +142,10 @@ function buttonAdd() {
       inpAmount.value="";
       inpTip.value="";
       inpTax.value="";
+      inpbday.checked = false;
+
+      addpn.innerHTML= "Add Person " + (personList.length+1);
+        
 
 
 
