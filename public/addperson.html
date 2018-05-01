@@ -18,9 +18,10 @@
       You need to enable JavaScript to run this app.
     </noscript>
 
-    <h4>Add Person</h4>
+    
     <div class="pageAdd" id="pageAdd">
       <div id="root"></div>
+      <h4>Add Person</h4>
       
       
       <br><br>
@@ -29,29 +30,28 @@
       <input type="text" class="box" id="amount" name="amount" placeholder="Amount"><br>
       <input type="text" class="box" id="tip" name="tip" placeholder="Tip"><br>
       <input type="text" class="box" id="tax" name="tax" placeholder="Tax"><br>
-      <div class="container">
         <div class="round">
           <input type="checkbox" id="checkbox" />
-          <label for="checkbox"></label>
+          <label style="color: #666666" for="checkbox">Birthday</label>
         </div>
-      </div>
-
-      <!---
-      <input type="checkbox" name="bday" value="bday" id="bday"><label style="color: #666666" for="bday">Birthday</label> -->
+      
 
       <br>
-      <input type="submit" class="button" value="Add" name="submit" id="submit" onclick="buttonAdd()">
+      <input type="submit" class="button" value="Add Person" name="submit" id="submit" onclick="buttonAdd()">
       <input type="submit" class="button" value="Done" name="submit" id="submit" onclick="buttonDone()">
     </div>
 
 
 
-
+    
 
 
 
     <div class="pageFinal" id="pageFinal" style="display:none;">
+      <h4>Splitter</h4>
       <input type="submit" value="Return" name="submit" id="submit" onclick="buttonReturn()">
+
+      <label id="printme" style="color: #000000"></label>
     </div>
 
 
@@ -67,11 +67,29 @@
   
 var pageFinal1 = document.getElementById('pageFinal');
 var pageAdd1 = document.getElementById('pageAdd');
+var inpName = document.getElementById('name');
+var inpAmount = document.getElementById('amount');
+var inpTip = document.getElementById('tip');
+var inpTax = document.getElementById('tax');
+var printL = document.getElementById('printme');
 
 function buttonDone() {
 
         pageAdd1.style.display = 'none';
         pageFinal1.style.display = 'inline-block';
+
+
+
+
+     
+        for(i=0;personList.length;i++)
+        {  
+          printL.innerHTML+=personList[i].name + ":       " + personList[i].total " <br> ";
+        }
+
+
+
+
     }
 
 function buttonReturn() {
@@ -79,6 +97,29 @@ function buttonReturn() {
         pageFinal1.style.display = 'none';
         pageAdd1.style.display = 'inline-block';
     }
+
+var personList=[];
+
+function buttonAdd() {
+
+
+
+      var person = {name:inpName.value,amount:inpAmount.value,tip:inpTip.value,tax:inpTax.value,birthday:yesorno,total:0};
+
+      personList.push(person);
+
+      inpName.value="";
+      inpAmount.value="";
+      inpTip.value="";
+      inpTax.value="";
+
+
+
+
+    }
+
+
+
 
 
 

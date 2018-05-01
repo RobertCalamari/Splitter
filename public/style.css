@@ -51,7 +51,8 @@ h4 {
     background-color: #00B295;
     border: none;
     color: white;
-    padding: 4px 32px;
+    width: 100px;
+    padding: 4px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -62,7 +63,8 @@ h4 {
     background-color: #00ccaa;
     border: none;
     color: white;
-    padding: 4px 32px;
+    width: 100px;
+    padding: 4px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -74,19 +76,20 @@ h4 {
 
 
 .round {
-  position: relative;
+  position: absolute;
+  margin-left: auto;
 }
 
 .round label {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #E4DFDA;
+  border: 1px solid #66bb6a;
   border-radius: 50%;
   cursor: pointer;
-  height: 28px;
+  height: 14px;
   left: 0;
   position: absolute;
   top: 0;
-  width: 28px;
+  width: 14px;
 }
 
 .round label:after {
@@ -94,13 +97,13 @@ h4 {
   border-top: none;
   border-right: none;
   content: "";
-  height: 6px;
-  left: 7px;
+  height: 3px;
+  left: 2px;
   opacity: 0;
   position: absolute;
-  top: 8px;
+  top: 3px;
   transform: rotate(-45deg);
-  width: 12px;
+  width: 10px;
 }
 
 .round input[type="checkbox"] {
