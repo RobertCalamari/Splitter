@@ -52,7 +52,8 @@ h4 {
     border: none;
     color: white;
     width: 100px;
-    padding: 4px 0px;
+    height: 30px;
+    padding: 4px 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -64,7 +65,8 @@ h4 {
     border: none;
     color: white;
     width: 100px;
-    padding: 4px 0px;
+    height: 30px;
+    padding: 4px 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -77,8 +79,11 @@ h4 {
 
 .round {
   position: absolute;
-  margin-left: auto;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
 }
+
 
 .round label {
   background-color: #E4DFDA;
@@ -118,3 +123,28 @@ h4 {
 .round input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
+
+
+.box {
+
+  border: 0;
+  outline: none;
+  outline-offset: 0;
+  height: 50px;
+  font-size: 18px;
+  background: #E4DFDA;
+  font-weight: bold;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    
+    opacity: 0.2; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    opacity: 0.2;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    opacity: 0.2;
+} 

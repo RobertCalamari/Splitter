@@ -24,19 +24,23 @@
       <h4>Add Person</h4>
       
       
-      <br><br>
+      <br>
 
       <input type="text" class="box" id="name" name="name" placeholder="Name"><br>
       <input type="text" class="box" id="amount" name="amount" placeholder="Amount"><br>
       <input type="text" class="box" id="tip" name="tip" placeholder="Tip"><br>
       <input type="text" class="box" id="tax" name="tax" placeholder="Tax"><br>
+      <br>
         <div class="round">
-          <input type="checkbox" id="checkbox" />
-          <label style="color: #666666" for="checkbox">Birthday</label>
+          <input type="checkbox" id="checkbox" /> 
+          <label style="color: #666666" for="checkbox"></label>
         </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label style="color: #666666">Birthday</label>
       
 
-      <br>
+      <br><br><br><br><br><br>
+
       <input type="submit" class="button" value="Add Person" name="submit" id="submit" onclick="buttonAdd()">
       <input type="submit" class="button" value="Done" name="submit" id="submit" onclick="buttonDone()">
     </div>
@@ -82,10 +86,10 @@ function buttonDone() {
 
 
      
-        for(i=0;personList.length;i++)
-        {  
-          printL.innerHTML+=personList[i].name + ":       " + personList[i].total " <br> ";
-        }
+        // for(i=0;personList.length;i++)
+        // {  
+        //   printL.innerHTML+=personList[i].name + ":       " + personList[i].total " <br> ";
+        // }
 
 
 
