@@ -169,3 +169,28 @@ text-align: left;
 font-weight:bold;
 font-size: 20px;
 }
+
+.buttonedit {
+  background-image:url('pencil.png');
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 18px;           /* make this the size of your image */
+    padding-left: 18px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+}
+
+
+.buttondel {
+  background-image:url('ex.png');
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 18px;           /* make this the size of your image */
+    padding-left: 18px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+}

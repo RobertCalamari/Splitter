@@ -71,8 +71,7 @@
     <div class="pageFinal" id="pageFinal" style="display:none;">
       <h4>Splitter</h4>
 
-
-      <!--<p id="printme" style="color: #000000"></p>-->
+      <br><br><br>
       <div id="printme" class="printme"></div>
 
 
@@ -102,6 +101,37 @@ var printL = document.getElementById('printme');
 var inpbday = document.getElementById('checkbox');
 var addpn = document.getElementById('addpersonnum');
 
+
+
+function buttonEdit(id){
+    
+
+    inpName.value=personList[id].name;
+    inpAmount.value=personList[id].amount;
+    inpTip.value=personList[id].tip;
+    inpTax.value=personList[id].tax;
+
+
+    if(personList[id].birthday == true)
+    {
+          inpbday.checked = true;
+    }
+    else
+    {
+          inpbday.checked = false;
+    }
+
+    buttonReturn();
+}
+
+function buttonDel(){
+
+  
+}
+
+
+
+
 function buttonDone() {
 
         pageAdd1.style.display = 'none';
@@ -126,9 +156,9 @@ function buttonDone() {
 
 
                   printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 125px;color: #666666'>" + personList[i].name + "</div>";
-                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 50px;color: #000000'>" + personList[i].total + "</div>";
-                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 50px'>" + '<button type="submit" class="button3" name="editbut" value="' + i + '">Edit</button>' + "</div>";
-                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 50px'>" + '<button type="submit" class="button3" name="delbut" value="' + i + '">Del</button>' + "</div>";
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 75px;color: #000000'>" + personList[i].total + "</div>";
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit"     class="buttonedit" name="editbut" value="' + i + '" onclick="buttonEdit(this.value)"></button>' + "</div>";
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit" class="buttondel" name="delbut" value="' + i + '" onclick="buttonDel(this.value)"></button>' + "</div>";
                   printL.innerHTML+="<br>";
 
               
@@ -162,7 +192,7 @@ function buttonAdd() {
       }
 
 
-      var person = {name:inpName.value,amount:inpAmount.value,tip:inpTip.value,tax:inpTax.value,birthday:yesorno,total:0};
+      var person = {name:inpName.value,amount:inpAmount.value,tip:inpTip.value,tax:inpTax.value,birthday:yesorno,total:44.24};
 
       personList.push(person);
 
@@ -186,8 +216,7 @@ function buttonAdd() {
     $(function(){
   $(".fab,.backdrop").click(function(){
      
-        pageFinal1.style.display = 'none';
-        pageAdd1.style.display = 'inline-block';
+        buttonReturn();
 
   });
 });
