@@ -124,6 +124,20 @@ h4 {
   opacity: 1;
 }
 
+.round input[type="checkbox2"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox2"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type="checkbox2"]:checked + label:after {
+  opacity: 1;
+}
+
+
 
 .box {
 

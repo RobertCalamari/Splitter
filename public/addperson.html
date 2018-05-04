@@ -64,6 +64,57 @@
 
 
 
+
+
+
+
+
+<div class="pageEdit" id="pageEdit" style="display:none;">
+      <div id="root"></div>
+      <h4 id="addpersonnum">Edit Person</h4>
+      
+      
+      <br>
+
+      <input type="text" class="box" id="name2" name="name" placeholder="Name"><br>
+      <input type="text" class="box" id="amount2" name="amount" placeholder="Amount"><br>
+      <input type="text" class="box" id="tip2" name="tip" placeholder="Tip"><br>
+      <input type="text" class="box" id="tax2" name="tax" placeholder="Tax Percentage"><br>
+      <br>
+        <div class="round">
+          <input type="checkbox" id="checkbox2" /> 
+          <label style="color: #666666" for="checkbox2"></label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label style="color: #666666">Birthday</label>
+      
+
+      <br><br><br><br><br><br>
+
+      <input type="submit" class="button" value="Edit Person" name="submit" id="buttonAD" onclick="buttonAddEdit()">
+
+
+      <script type="text/javascript">
+        
+      </script>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
 
@@ -93,6 +144,7 @@
   
 var pageFinal1 = document.getElementById('pageFinal');
 var pageAdd1 = document.getElementById('pageAdd');
+var pageEdit1 = document.getElementById('pageEdit');
 var inpName = document.getElementById('name');
 var inpAmount = document.getElementById('amount');
 var inpTip = document.getElementById('tip');
@@ -100,72 +152,112 @@ var inpTax = document.getElementById('tax');
 var printL = document.getElementById('printme');
 var inpbday = document.getElementById('checkbox');
 var addpn = document.getElementById('addpersonnum');
+var inpName2 = document.getElementById('name2');
+var inpAmount2 = document.getElementById('amount2');
+var inpTip2 = document.getElementById('tip2');
+var inpTax2 = document.getElementById('tax2');
+var inpbday2 = document.getElementById('checkbox2');
+var buttonAD2 = document.getElementById('buttonAD');
 
 
 
 function buttonEdit(id){
     
 
-    inpName.value=personList[id].name;
-    inpAmount.value=personList[id].amount;
-    inpTip.value=personList[id].tip;
-    inpTax.value=personList[id].tax;
+    inpName2.value=personList[id].name;
+    inpAmount2.value=personList[id].amount;
+    inpTip2.value=personList[id].tip;
+    inpTax2.value=personList[id].tax;
+    buttonAD2.name=id;
 
 
     if(personList[id].birthday == true)
     {
-          inpbday.checked = true;
+          inpbday2.checked = true;
     }
     else
     {
-          inpbday.checked = false;
+          inpbday2.checked = false;
     }
 
-    buttonReturn();
+    pageFinal1.style.display = 'none';
+    pageAdd1.style.display = 'none';
+    pageEdit1.style.display = 'inline-block';
 }
 
-function buttonDel(){
 
-  
+function buttonAddEdit(){
+    
+    for(i=0;personList.length;i++)
+        {  
+          if(i==buttonAD2.name)
+          {
+            personList[i].name==inpName2.value;
+            personList[i].amount==inpAmount2.value;
+            personList[i].tip==inpTip2.value;
+            personList[i].tax==inpTax2.value;
+
+            if(inpbday2.checked == true)
+            {
+                personList[i].birthday==true;
+            }
+            else
+            {
+                personList[i].birthday==false;
+            }
+
+            
+          }
+        }
+
+    
+    pageFinal1.style.display = 'inline-block';
+    pageAdd1.style.display = 'none';
+    pageEdit1.style.display = 'none';
+    printL.innerHTML="";
+
+        
+        for(i=0;personList.length;i++)
+        {  
+             
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 125px;color: #666666'>" + personList[i].name + "</div>";
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 75px;color: #000000'>" + personList[i].total + "</div>";
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit"     class="buttonedit" name="editbut" value="' + i + '" onclick="buttonEdit(this.value)"></button>' + "</div>";
+                  // printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit" class="buttondel" name="delbut" value="' + i + '" onclick="buttonDel(this.value)"></button>' + "</div>";
+                  printL.innerHTML+="<br>";
+
+        }
+
+
+
+
+
+
 }
+
+
+
+
 
 
 
 
 function buttonDone() {
 
-        pageAdd1.style.display = 'none';
         pageFinal1.style.display = 'inline-block';
+        pageAdd1.style.display = 'none';
+        pageEdit1.style.display = 'none';
         printL.innerHTML="";
 
         
         for(i=0;personList.length;i++)
         {  
-                //   printL.innerHTML+='<table  align="center">';
-
-                //   printL.innerHTML+='<tr>';
-                //   printL.innerHTML+="<td width='200'>" + personList[i].name + "</td>";
-                //   printL.innerHTML+="<td>" + personList[i].total + "</td>";
-                //   printL.innerHTML+="<td>" + '<button type="submit" class="button3" name="editbut" value="' + i + '">Edit</button>' + "</td>";
-                //   printL.innerHTML+="<td>" + '<button type="submit" class="button3" name="delbut" value="' + i + '">Del</button>' + "</td>";
-                //   printL.innerHTML+="</tr>";
-              
-                // printL.innerHTML+="</table>";
-
-
-
-
+             
                   printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 125px;color: #666666'>" + personList[i].name + "</div>";
                   printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 75px;color: #000000'>" + personList[i].total + "</div>";
                   printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit"     class="buttonedit" name="editbut" value="' + i + '" onclick="buttonEdit(this.value)"></button>' + "</div>";
-                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit" class="buttondel" name="delbut" value="' + i + '" onclick="buttonDel(this.value)"></button>' + "</div>";
+                  // printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit" class="buttondel" name="delbut" value="' + i + '" onclick="buttonDel(this.value)"></button>' + "</div>";
                   printL.innerHTML+="<br>";
-
-              
-
-
-
-
 
         }
        
@@ -178,6 +270,7 @@ function buttonReturn() {
 
         pageFinal1.style.display = 'none';
         pageAdd1.style.display = 'inline-block';
+        pageEdit1.style.display = 'inline-block';
     }
 
 var personList=[];
@@ -216,7 +309,9 @@ function buttonAdd() {
     $(function(){
   $(".fab,.backdrop").click(function(){
      
-        buttonReturn();
+        pageFinal1.style.display = 'none';
+    pageAdd1.style.display = 'inline-block';
+    pageEdit1.style.display = 'none';
 
   });
 });
