@@ -149,5 +149,23 @@ h4 {
     opacity: 0.2;
 } 
 
-table { table-layout: fixed; }
-td { width: 33%; }
+
+
+
+.infoContainer {
+  padding-left: 15px;
+  padding-bottom: 40px;
+}
+
+.printme {
+white-space: nowrap;
+
+
+}
+
+.insidediv{
+
+text-align: left;
+font-weight:bold;
+font-size: 20px;
+}
