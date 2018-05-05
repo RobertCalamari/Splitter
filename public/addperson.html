@@ -189,6 +189,7 @@ function buttonEdit(id){
 
 function buttonAddEdit(id){
     
+       
 
         var bisc = false;
         if(personList[id].birthday==true)
@@ -220,10 +221,17 @@ function buttonAddEdit(id){
             }
         }
 
-    
-    pageFinal1.style.display = 'inline-block';
+        if(inpName2.value == "" || inpAmount2.value == "" || inpTip2.value == "" || inpTax2.value == "")
+        {
+            alert("Please fill in all boxes!");
+        } 
+        else
+        {
+              pageFinal1.style.display = 'inline-block';
     pageAdd1.style.display = 'none';
     pageEdit1.style.display = 'none';
+        }
+
     
     
     
@@ -242,22 +250,41 @@ var afaddround = 0;
 var numofbd = 0;
 
 
-function printOut(){
+var multibday = 0;
 
-printL.innerHTML="";
-       
-        for(i=0;personList.length;i++)
+
+function printOut(){
+      multibday = 0;
+
+      printL.innerHTML="";
+
+        
+
+        for(i=0;i<personList.length;i++)
+        {
+          if(personList[i].birthday==true)
+          {
+              multibday+=personList[i].total;
+          }
+
+        }
+
+
+        multibday=multibday/(personList.length-numofbd);
+        multibday = Math.round(100*multibday)/100;  
+        for(i=0;i<personList.length;i++)
         {  
-                   //bfsplit = bdayadd;
-                   bdayadd = afaddround/(personList.length-numofbd);
-                   //bfround = bdayadd;
-                   bdayadd = Math.round(100*bdayadd)/100;  
+                   // //bfsplit = bdayadd;
+                   // bdayadd = afaddround/(personList.length-numofbd);
+                   // //bfround = bdayadd;
+                   // bdayadd = Math.round(100*bdayadd)/100;  
+                   
 
                   //personList[i].total = Number(personList[i].amount)  +    Number(personList[i].tip)    +    ( Number(personList[i].amount)  *  ( Number(personList[i].tax) * 0.01 ) );
 
                   if(personList[i].birthday==false)
                   {
-                      personList[i].total = Number(personList[i].amount)  +    Number(personList[i].tip)    +    ( Number(personList[i].amount)  *  ( Number(personList[i].tax) * 0.01 ) ) + bdayadd;
+                      personList[i].total = Number(personList[i].amount)  +    Number(personList[i].tip)    +    ( Number(personList[i].amount)  *  ( Number(personList[i].tax) * 0.01 ) ) + multibday;
                   }
                   else
                   {
@@ -267,9 +294,9 @@ printL.innerHTML="";
 
              
                   printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 125px;color: #666666'>" + personList[i].name + "</div>";
-                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 75px;color: #000000'>$" + parseFloat(personList[i].total).toFixed(2) + "</div>";
+                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 100px;color: #000000'>$" + parseFloat(personList[i].total).toFixed(2) + "</div>";
                   printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit"     class="buttonedit" name="editbut" value="' + i + '" onclick="buttonEdit(this.value)"></button>' + "</div>";
-                  printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit" class="buttondel" name="delbut" value="' + i + '" onclick="buttonDel(this.value)"></button>' + "</div>";
+                  //printL.innerHTML+="<div class='insidediv' style='display: inline-block;width: 30px'>" + '<button type="submit" class="buttondel" name="delbut" value="' + i + '" onclick="buttonDel(this.value)"></button>' + "</div>";
                   printL.innerHTML+="<br>";
 
         }
@@ -302,18 +329,34 @@ function buttonReturn() {
 
 
 
+
 function buttonAdd() {
+
+      var err = false;
+      if(inpName.value == "" || inpAmount.value == "" || inpTip.value == "" || inpTax.value == "")
+      {
+          err = true;
+      } 
+      
+
+    
+
+
+
+      if(err==false)
+      {
+
 
       var yesorno = false;
       
 
       //var ttotal =Number(personList[i].amount)   +    Number(personList[i].tip)    +    ( Number(personList[i].amount)  *  ( Number(personList[i].tax) * 0.01 ) );
       var ttotal =Number(inpAmount.value)   +    Number(inpTip.value)    +    ( Number(inpAmount.value)  *  ( Number(inpTax.value) * 0.01 ) );
-      temp = ttotal;
+      //temp = ttotal;
       ttotal = Math.round(100*ttotal)/100;  
       if(inpbday.checked == true)
       {
-          bfaddround = temp;
+          //bfaddround = temp;
           afaddround = ttotal;
           yesorno = true;
           bdayadd = ttotal;
@@ -339,6 +382,16 @@ function buttonAdd() {
         
 
 
+          
+
+
+      }
+      else
+      {
+        alert("Please fill in all boxes!");
+      }
+
+
 
 
     }
@@ -349,10 +402,12 @@ function buttonAdd() {
     $(function(){
   $(".fab,.backdrop").click(function(){
      
-        pageFinal1.style.display = 'none';
-    pageAdd1.style.display = 'inline-block';
-    pageEdit1.style.display = 'none';
+pageFinal1.style.display = 'none';
+          pageAdd1.style.display = 'inline-block';
+          pageEdit1.style.display = 'none';
+      
 
+      
   });
 });
 
